@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Kassid</title>
+
+    <style>
+        #errmsg, #error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<form action="">
+    Kassi nimi: <label>
+    <input id="petName" type="text" name="petName">
+</label><br>
+    Kassi sünniaasta: <label>
+    <input id="birthDate" type="text" name="birthDate">&nbsp;<span id="errmsg"></span>
+</label><br>
+    <input type="submit" value="Submit">
+</form>
+<span id="error"></span>
+
+<!-- jQuery -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+//        $(function() {
+//            $('form').each(function() {
+//                $(this).find('input').keypress(function(e) {
+//                    // Enter pressed?
+//                    if(e.which == 10 || e.which == 13) {
+//                        this.form.submit();
+//                    }
+//                });
+//
+////                $(this).find('input[type=submit]').hide();
+//            });
+//        });
+
+        $("#birthDate").keypress(function (e) {
+            //if the letter is not digit then display error and don't type anything
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                //display error message
+                $("#errmsg").html("Ainult täisarvud on lubatud!").show().fadeOut(2500);
+                return false;
+            }
+        });
+
+        (function ($) {
+            $.fn.validateFormFields = function () {
+                var has_empty = false;
+
+                $(this).find('input[type!="hidden"]').each(function () {
+                    if (!$(this).val()) {
+                        has_empty = true;
+                        return false;
+                    }
+
+                    if($(this).attr('id') == 'birthDate'){
+                        var currentYear = new Date().getFullYear();
+
+//                        console.log("this value:" + $(this).val());
+//                        console.log(currentYear);
+                        if ((currentYear - $(this).val()) > 50 && $(this).val() < currentYear) {
+                            $("#errmsg").html("Teie kass ei saa nii vana olla!").show().fadeOut(2500);
+                            return false;
+                        }
+                    }
+                });
+
+                if (has_empty) {
+                    $("#error").text("Palun täitke kõik väljad!").show().fadeOut(2500);
+                    return false;
+                }
+            };
+        })(jQuery);
+
+        $("form").submit(function (event) {
+            event.preventDefault();
+            var has_errors = $(this).validateFormFields();
+
+            if(has_errors) {
+                $(this).submit();
+                console.log("tala")
+            }
+        })
+    });
+</script>
+</body>
+</html>

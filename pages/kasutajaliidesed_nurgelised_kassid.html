@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CatsApp">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="app_nurgelised_kassid.css">
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/app_nurgelised_kassid.js"></script>
+</head>
+<body ng-controller="CatsController as cats">
+<section ng-controller="TabsController as tabs">
+    <h1>{{tabs.tabName}}</h1>
+    <ul>
+        <li><a href ng-click="tabs.SetTab(1)">Lisa kass</a></li>
+        <li><a href ng-click="tabs.SetTab(2)">Nimekiri</a></li>
+    </ul>
+
+    <div ng-show="tabs.IsSet(1)">
+        <h1>Lisamine</h1>
+        <form ng-submit="cats.AddItem()">
+            Nimi: <input name="addCat" type="text" ng-model="cats.formitem.name" required/><br/>
+            Sünniaasta: <input type="number" min="{{tabs.getYear('min')}}" max="{{tabs.getYear('max')}}" ng-model="cats.formitem.birthDate" required/><br/>
+            <input type="submit" value="Lisa">
+        </form>
+    </div>
+
+    <div ng-show="tabs.IsSet(2)">
+        <h1>Nimekiri</h1>
+        Otsi: <input type="text" ng-model="query">
+        <ul>
+            <li ng-repeat="item in cats.items | filter:query | orderBy:'-birthDate' track by $index">{{item.name}}: {{item.birthDate}}</li>
+        </ul>
+    </div>
+</section>
+
+</body>
+</html>
