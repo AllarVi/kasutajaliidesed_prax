@@ -30,8 +30,12 @@
 
     <!-- AngularJS Setup -->
     <script src="../../../js/angular.min.js"></script>
+    <!-- Bower components -->
+    <script src="../../../bower_components/angular-route/angular-route.js"></script>
+
     <script src="../../../app/app.js"></script>
     <script src="../../../app/components/home/homeController.js"></script>
+    <script src="../../../app/components/study_results/studyResultsController.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,7 +44,7 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-controller="homeController as home">
+<body ng-controller="homeController">
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -270,19 +274,21 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <!-- include left_panel -->
-        <div ng-if="home.getRole() == ROLE_STUDENT">
+        <!-- include left panel -->
+        <div ng-if="getRole() == ROLE_STUDENT">
             <div ng-include="'../../../app/shared/left_panel/left_panel_student.html'"></div>
         </div>
-        <div ng-if="home.getRole() == ROLE_TEACHER">
+        <div ng-if="getRole() == ROLE_TEACHER">
             <div ng-include="'../../../app/shared/left_panel/left_panel_teacher.html'"></div>
         </div>
     </nav>
 
+    <!-- /#page-wrapper -->
     <div id="page-wrapper">
+        <!-- /.row -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Uudisvoog</h1>
+                <div ng-view></div>
             </div>
             <!-- /.col-lg-12 -->
         </div>
@@ -600,9 +606,7 @@
             </div>
             <!-- /.col-lg-4 -->
         </div>
-        <!-- /.row -->
     </div>
-    <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
