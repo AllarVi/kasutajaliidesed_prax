@@ -51,6 +51,15 @@ function studyResultsController($scope) {
                     ["KT2", 3]
                 ]
             }]
+        },
+        {
+            subject: "Kasutajaliidesed",
+            contents: [{
+                grades: [
+                    ["labor1", 5],
+                    ["labor2", 5]
+                ]
+            }]
         }
     ];
 
