@@ -1,4 +1,4 @@
-var app = angular.module("ois", ['ngRoute'])
+var app = angular.module("ois", ['ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate', 'ngTouch'])
     .constant('ROLE_STUDENT', 'student')
     .constant('ROLE_TEACHER', 'teacher');
 
