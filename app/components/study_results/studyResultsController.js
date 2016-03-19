@@ -7,25 +7,9 @@ function studyResultsController($scope) {
 
     /* Open one item at a time */
     $scope.oneAtATime = false;
-
-    $scope.groups = [];
-
-    $scope.studyResults = [
-        {subject: "Andmebaasid II", content: "Hinded"},
-        {subject: "Kasutajaliidesed", content: "Hinded"},
-        {subject: "Matemaatiline analüüs II", content: "Hinded"}
-    ];
-
-    for (var i = 0; i < $scope.studyResults.length; i++) {
-        var item = {
-            title: $scope.studyResults[i].subject,
-            content: $scope.studyResults[i].content
-        };
-        $scope.groups.push(item);
-    }
-
+    
     $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-
+    
     $scope.addItem = function () {
         var newItemNo = $scope.items.length + 1;
         $scope.items.push('Item ' + newItemNo);
@@ -35,6 +19,52 @@ function studyResultsController($scope) {
         isFirstOpen: true,
         isFirstDisabled: false
     };
+
+    /* We hold study results view data here */
+    $scope.groups = [];
+    
+    var studyResultsJSON = [
+        {
+            subject: "Andmebaasid II",
+            contents: [{
+                grades: [
+                    ["HW1", 2],
+                    ["HW2", 3],
+                    ["HW3", 5],
+                    ["KT1", 4],
+                    ["HW4", 1],
+                    ["HW5", 4],
+                    ["KT2", 3]
+                ]
+            }]
+        },
+        {
+            subject: "Füüsika I",
+            contents: [{
+                grades: [
+                    ["HW1", 2],
+                    ["HW2", 3],
+                    ["HW3", 5],
+                    ["KT1", 4],
+                    ["HW4", 1],
+                    ["HW5", 4],
+                    ["KT2", 3]
+                ]
+            }]
+        }
+    ];
+
+    $scope.studyResults = angular.fromJson(studyResultsJSON);
+    
+    for (var i = 0; i < $scope.studyResults.length; i++) {
+        var item = {
+            /* subject refers to the title of the subject*/
+            title: $scope.studyResults[i].subject,
+            /* contents[0] refers to grades */
+            content: $scope.studyResults[i].contents[0]
+        };
+        $scope.groups.push(item);
+    }
 }
 
 function studyResultsService($http, $rootScope) {

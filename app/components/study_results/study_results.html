@@ -24,19 +24,31 @@
         </script>
 
         <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group heading="Staatiline" is-open="status.isFirstOpen"
+            <uib-accordion-group heading="Üldine" is-open="status.isFirstOpen"
                                  is-disabled="status.isFirstDisabled">
                 Vajuta õppeaine nimetusele.
             </uib-accordion-group>
             <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
-                {{group.content}}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Kirjeldus</th>
+                            <th>Tulemus</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="grade in group.content.grades track by $index">
+                            <td>{{grade[0]}}</td>
+                            <td>{{grade[1]}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </uib-accordion-group>
             <uib-accordion-group heading="(testing) Dynamic Body Content">
                 <button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
                 <div ng-repeat="item in items">{{item}}</div>
-            </uib-accordion-group>
-            <uib-accordion-group heading="(testing) Custom template" template-url="group-template.html">
-                Hello
             </uib-accordion-group>
         </uib-accordion>
     </div>
