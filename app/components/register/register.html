@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ois">
 
 <head>
 
@@ -26,6 +26,18 @@
     <!-- Custom Fonts -->
     <link href="../../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- AngularJS setup -->
+    <script src="../../../js/angular.min.js"></script>
+
+    <!-- Bower components -->
+    <script src="../../../bower_components/angular-route/angular-route.js"></script>
+    <script src="../../../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../../../bower_components/angular-touch/angular-touch.min.js"></script>
+
+    <script src="../../../app/app.js"></script>
+    <script src="../../../app/components/register/registerController.js"></script>
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -35,7 +47,7 @@
 
 </head>
 
-<body>
+<body ng-controller="registerController">
 
 <div class="container">
     <div class="row">
@@ -48,22 +60,23 @@
                     <form role="form">
                         <fieldset>
                             <div class="form-group">
-                                <input class="form-control" placeholder="E-mail..." name="email" type="email" autofocus>
+                                <input class="form-control" placeholder="{{ emeil }}" name="email" type="email"
+                                       autofocus>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Parool..." name="password" type="password"
+                                <input class="form-control" placeholder="{{ parool }}" name="password" type="password"
                                        value="">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Parool uuesti..." name="passwordconfirm"
+                                <input class="form-control" placeholder="{{ parooluuesti }}" name="passwordconfirm"
                                        type="password" value="">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Eesnimi..." name="eesnimi" type="text"
+                                <input class="form-control" placeholder="{{ eesnimi }}" name="eesnimi" type="text"
                                        value="">
                             </div>
                             <div class="form-group">
-                                <input class="form-control" placeholder="Perekonnanimi..." name="perekonnanimi"
+                                <input class="form-control" placeholder="{{ perekonnanimi }}" name="perekonnanimi"
                                        type="text" value="">
                             </div>
                             <div class="form-group">
@@ -74,7 +87,7 @@
                             </div>
                             <div class="form-group login-group-checkbox">
                                 <input type="checkbox" class="" id="reg_agree" name="reg_agree">
-                                <label for="reg_agree">Nõustun <a href="termsandcontitions.html" target="popup"
+                                <label for="reg_agree">Nõustun <a href="#" target="popup"
                                                                   onclick="window.open('termsandcontitions.html','Tingimused','width=600,height=400')">tingimustega</a></label>
                             </div>
                             <p>Oled juba kasutaja? <a href="../login/login.html">logi sisse</a></p>
@@ -93,6 +106,10 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap Core AngularJS -->
+<script src="../../../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="../../../bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
