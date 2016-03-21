@@ -1,0 +1,195 @@
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+.error {
+    margin-top: 5px;
+    color: rgba(135, 0, 66, 1);
+    display: block;
+    font-family: 'Exo', sans-serif;
+}
+
+.help {
+    color: rgba(255, 255, 255, 1);
+    margin-top: 10px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Exo', sans-serif;
+}
+
+.help:hover,
+.help:active {
+    color: rgba(135, 0, 66, 1);
+    text-decoration: none;
+    outline: none;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+    -khtml-user-select: none; /* Konqueror */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE/Edge */
+    user-select: none;
+    /* non-prefixed version, currently
+                           not supported by any browser */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #fff;
+
+    color: #fff;
+    font-family: Arial;
+    font-size: 16px;
+}
+
+.body {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: auto;
+    height: auto;
+    background-image: url(../../../dist/css/media/background.jpg);
+    background-size: cover;
+    /*-webkit-filter: blur(5px);*/
+    z-index: 0;
+}
+
+.grad {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: auto;
+    height: auto;
+    background: -moz-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
+    background: -webkit-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    z-index: 1;
+    opacity: 0.6;
+}
+
+.header {
+    position: absolute;
+    top: calc(50% - 35px);
+    left: calc(50% - 400px);
+    z-index: 2;
+}
+
+.header div {
+    float: left;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 35px;
+    font-weight: 200;
+}
+
+.header div span {
+    color: #870042 !important;
+}
+
+.login {
+    position: absolute;
+    top: calc(50% - 75px);
+    left: calc(50% + 50px);
+    height: 150px;
+    width: 350px;
+    padding: 10px;
+    z-index: 2;
+}
+
+.login input[type=email] {
+    width: 250px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: rgba(135, 0, 66, 0.9);
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+}
+
+.login input[type=password] {
+    width: 250px;
+    height: 30px;
+    background: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: rgba(135, 0, 66, 0.9);
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.login input[type=submit] {
+    width: 250px;
+    height: 35px;
+    background: rgba(135, 0, 66, 0.7);
+    border: 1px solid rgba(135, 0, 66, 0.7);
+    cursor: pointer;
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+.login input[type=submit]:hover {
+    opacity: 0.8;
+}
+
+.login input[type=submit]:active {
+    opacity: 0.6;
+}
+
+.login input[type=email]:focus {
+    outline: none;
+    border: 1px solid rgba(135, 0, 66, 0.9);
+}
+
+.login input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(135, 0, 66, 0.9);
+}
+
+.login input[type=submit]:focus {
+    outline: none;
+}
+
+input.form-control::-webkit-input-placeholder {
+    color: rgba(135, 0, 66, 0.9);
+}
+
+input.form-control::-moz-placeholder {
+    color: rgba(135, 0, 66, 0.9);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: rgba(135, 0, 66, 0.9);
+}
+
+/*::-webkit-input-placeholder{*/
+/*color: rgba(135, 0, 66, 0.6);*/
+/*}*/
+
+/*!*::-moz-input-placeholder{*!*/
+/*!*color: rgba(255,255,255,0.6);*!*/
+/*!*}*!*/
+
+/*::-moz-placeholder {  !* Firefox 19+ *!*/
+/*color: red;*/
+/*}*/

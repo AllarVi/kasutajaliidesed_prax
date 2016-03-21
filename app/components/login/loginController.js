@@ -6,15 +6,27 @@ app.controller("loginController", function ($scope, $location) {
     $scope.teacher = "teacher@mail.com";
     $scope.teacherPassword = "teacher";
 
+    $scope.failedLogin = "Logi sisse";
+
     $scope.emailHint = "E-mail...";
     $scope.passwordHint = "Parool...";
     $scope.emailFieldEmpty = false;
     $scope.passwordFieldEmpty = false;
 
-    $scope.hideErrorMessages = function () {
+    $scope.hideEmailFieldEmptyErrorMessage = function () {
         $scope.emailFieldEmpty = false;
-        $scope.passwordFieldEmpty = false;
+        $scope.failedLogin = "Logi sisse";
     };
+
+    $scope.hidePasswordFieldEmptyErrorMessage = function () {
+        $scope.passwordFieldEmpty = false;
+        $scope.failedLogin = "Logi sisse";
+    };
+
+    // $scope.hideErrorMessages = function () {
+    //     $scope.emailFieldEmpty = false;
+    //     $scope.passwordFieldEmpty = false;
+    // };
 
     // function to submit the form after all validation has occurred
     $scope.submitForm = function (email, password) {
@@ -37,7 +49,7 @@ app.controller("loginController", function ($scope, $location) {
             $scope.passwordFieldEmpty = true;
             $scope.passwordFieldEmptyErrorMessage = "Palun sisesta oma parool.";
         } else {
-            alert("Kasutajanimi või parool on vale.");
+            $scope.failedLogin = "Kasutajanimi või parool vale"
         }
 
     };
