@@ -9,11 +9,6 @@
     <!-- /.row -->
     <div ng-controller="gradeSheetTeacherController">
 
-        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
-            <i class="glyphicon glyphicon-plus">
-            </i> Add random item
-        </button>
-
         <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
             <thead>
             <tr>
@@ -34,10 +29,10 @@
                 <td>{{row.birthDate}}</td>
                 <td>{{row.balance}}</td>
                 <td>
-                    <button type="button" ng-click="editItem(row)" class="btn btn-sm btn-warning">
+                    <clicker type="button" class="btn btn-sm btn-warning">
                         <i class="glyphicon glyphicon-edit">
                         </i>
-                    </button>
+                    </clicker>
                     <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
                         <i class="glyphicon glyphicon-remove-circle">
                         </i>
@@ -46,6 +41,11 @@
             </tr>
             </tbody>
         </table>
+
+        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus">
+            </i> Lisa suvaline õpilane (testimiseks)
+        </button>
 
     </div>
 </div>
