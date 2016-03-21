@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{module_title}}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div ng-controller="gradeSheetTeacherController">
+
+        <button type="button" ng-click="addRandomItem(row)" class="btn btn-sm btn-success">
+            <i class="glyphicon glyphicon-plus">
+            </i> Add random item
+        </button>
+
+        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+            <thead>
+            <tr>
+                <th st-sort="firstName">Nimi</th>
+                <th st-sort="lastName">Matrikli nr.</th>
+                <th st-sort="birthDate">HW1</th>
+                <th st-sort="balance">HW2</th>
+            </tr>
+            <tr>
+                <th colspan="5"><input st-search="" class="form-control" placeholder="Otsi õpilast..." type="text"/>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="row in displayedCollection track by $index">
+                <td>{{row.firstName}}</td>
+                <td>{{row.lastName}}</td>
+                <td>{{row.birthDate}}</td>
+                <td>{{row.balance}}</td>
+                <td>
+                    <button type="button" ng-click="editItem(row)" class="btn btn-sm btn-warning">
+                        <i class="glyphicon glyphicon-edit">
+                        </i>
+                    </button>
+                    <button type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
+                        <i class="glyphicon glyphicon-remove-circle">
+                        </i>
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

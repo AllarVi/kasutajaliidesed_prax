@@ -264,7 +264,7 @@
         <!-- /.navbar-top-links -->
 
         <!-- include left panel -->
-        <div ng-include="'../../../app/shared/left_panel/left_panel_student.html'" ng-controller="leftPanelController"></div>
+        <div ng-include="'../../../app/shared/left_panel/left_panel_teacher.html'" ng-controller="leftPanelController"></div>
 
         <!--<div ng-if="getRole() == ROLE_STUDENT">-->
             <!--<div ng-include="'../../../app/shared/left_panel/left_panel_student.html'" ng-controller="leftPanelController"></div>-->
@@ -286,11 +286,13 @@
 <script src="../../../bower_components/angular-route/angular-route.min.js"></script>
 <script src="../../../bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="../../../bower_components/angular-touch/angular-touch.min.js"></script>
+<script src="../../../bower_components/angular-smart-table/dist/smart-table.min.js"></script>
 
 <script src="../../../app/app.js"></script>
 <script src="../../../app/components/home/homeController.js"></script>
 <script src="../../../app/components/study_results/studyResultsController.js"></script>
 <script src="../../../app/shared/left_panel/leftPanelController.js"></script>
+<script src="../../../app/components/grade_sheet_t/gradeSheetTeacherController.js"></script>
 
 <!-- Bootstrap Core AngularJS -->
 <script src="../../../bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
