@@ -1,4 +1,4 @@
-app.controller("loginController", function ($scope, $location) {
+app.controller("loginController", function ($scope) {
 
     $scope.student = "student@mail.com";
     $scope.studentPassword = "student";
@@ -6,21 +6,21 @@ app.controller("loginController", function ($scope, $location) {
     $scope.teacher = "teacher@mail.com";
     $scope.teacherPassword = "teacher";
 
-    $scope.failedLogin = "Logi sisse";
-
     $scope.emailHint = "E-mail...";
     $scope.passwordHint = "Parool...";
-    $scope.emailFieldEmpty = false;
-    $scope.passwordFieldEmpty = false;
+    $scope.loginHint = "Logi sisse";
+
+    $scope.emailFieldEmptyErrorMessage = "Palun sisesta oma email.";
+    $scope.passwordFieldEmptyErrorMessage = "Palun sisesta parool.";
 
     $scope.hideEmailFieldEmptyErrorMessage = function () {
-        $scope.emailFieldEmpty = false;
-        $scope.failedLogin = "Logi sisse";
+        $scope.submittedEmail = false;
+        $scope.loginHint = "Logi sisse";
     };
 
     $scope.hidePasswordFieldEmptyErrorMessage = function () {
-        $scope.passwordFieldEmpty = false;
-        $scope.failedLogin = "Logi sisse";
+        $scope.submittedPassword = false;
+        $scope.loginHint = "Logi sisse";
     };
 
     // $scope.hideErrorMessages = function () {
@@ -34,22 +34,14 @@ app.controller("loginController", function ($scope, $location) {
         $scope.email = email;
         $scope.password = password;
 
+        $scope.submittedEmail = true;
+        $scope.submittedPassword = true;
+
         // check to make sure the form is completely valid
         if ($scope.loginForm.$valid && !$scope.loginForm.$pristine && ((email == $scope.student && password == $scope.studentPassword) || (email == $scope.teacher && password == $scope.teacherPassword))) {
             window.location.href = "../../../app/components/home/home.html";
-        } else if ((email == undefined || email == "") && (password == undefined || password == "")) { // condition to display both missing email and password error
-            $scope.emailFieldEmpty = true;
-            $scope.emailFieldEmptyErrorMessage = "Palun sisesta oma email.";
-            $scope.passwordFieldEmpty = true;
-            $scope.passwordFieldEmptyErrorMessage = "Palun sisesta oma parool.";
-        } else if ((email == undefined || email == "") && password != "") { // condition to display missing email error
-            $scope.emailFieldEmpty = true;
-            $scope.emailFieldEmptyErrorMessage = "Palun sisesta oma email.";
-        } else if ((password == undefined || password == "") && email != "") { // condition to display missing password error
-            $scope.passwordFieldEmpty = true;
-            $scope.passwordFieldEmptyErrorMessage = "Palun sisesta oma parool.";
         } else {
-            $scope.failedLogin = "Kasutajanimi või parool vale"
+            $scope.loginHint = "Vigane sisenemine";
         }
 
     };

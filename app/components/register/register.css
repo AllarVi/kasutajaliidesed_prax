@@ -17,7 +17,7 @@
 
 .error {
     margin-top: 2px;
-    color: rgba(135, 0, 66, 1);
+    color: rgba(255, 255, 255, 1);
     display: block;
     font-family: 'Exo', sans-serif;
 }
@@ -33,7 +33,7 @@
 
 .help:hover,
 .help:active {
-    color: rgba(135, 0, 66, 1);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
     outline: none;
 }
@@ -73,26 +73,28 @@ body {
     z-index: 0;
 }
 
-.grad {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    width: auto;
-    height: auto;
-    background: -moz-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
-    background: -webkit-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 80%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    z-index: 1;
-    opacity: 0.6;
-}
+/*.grad {*/
+/*position: absolute;*/
+/*top: 0px;*/
+/*left: 0px;*/
+/*right: 0px;*/
+/*bottom: 0px;*/
+/*width: auto;*/
+/*height: auto;*/
+/*background: -moz-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); !* FF3.6-15 *!*/
+/*background: -webkit-radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 100%); !* Chrome10-25,Safari5.1-6 *!*/
+/*background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0) 80%); !* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ *!*/
+/*z-index: 1;*/
+/*opacity: 0.6;*/
+/*}*/
 
 .header {
     position: absolute;
     top: calc(50% - 35px);
     left: calc(50% - 400px);
     z-index: 2;
+    background: rgba(20, 20, 20, 0.7);
+    padding: 5px;
 }
 
 .header div {
@@ -111,10 +113,9 @@ body {
     position: absolute;
     top: calc(50% - 155px);
     left: calc(50% + 50px);
-    height: 150px;
-    width: 350px;
     padding: 10px;
     z-index: 2;
+    background: rgba(135, 0, 66, 0.7);
 }
 
 .login input[type=text] {
@@ -162,7 +163,7 @@ body {
     width: 250px;
     height: 35px;
     background: rgba(135, 0, 66, 0.7);
-    border: rgba(135, 0, 66, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     cursor: pointer;
     border-radius: 2px;
     color: #fff;
@@ -171,10 +172,13 @@ body {
     font-weight: 400;
     padding: 6px;
     margin-top: 10px;
+    display: block;
 }
 
 .login input[type=submit]:hover {
     opacity: 0.8;
+    background: rgba(255, 255, 255, 0.8);
+    color: rgba(135, 0, 66, 0.8);
 }
 
 .login input[type=submit]:active {
