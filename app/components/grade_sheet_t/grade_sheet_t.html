@@ -9,7 +9,7 @@
     <!-- /.row -->
     <div ng-controller="gradeSheetTeacherController">
 
-        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped">
+        <table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped fixed-table">
             <thead>
             <tr>
                 <th st-sort="firstName">Nimi</th>
@@ -29,13 +29,10 @@
                 <td>{{row.birthDate}}</td>
                 <td>{{row.balance}}</td>
                 <td>
-                    <clicker type="button" class="btn btn-sm btn-warning">
-                        <i class="glyphicon glyphicon-edit">
-                        </i>
+                    <clicker type="button" class="btn btn-sm btn-warning glyphicon glyphicon-edit">
                     </clicker>
-                    <button id="removeItem" type="button" ng-click="removeItem(row)" class="btn btn-sm btn-danger">
-                        <i class="glyphicon glyphicon-remove-circle">
-                        </i>
+                    <button id="removeItem" type="button" ng-click="removeItem(row)"
+                            class="btn btn-sm btn-danger glyphicon glyphicon-remove-circle">
                     </button>
                 </td>
             </tr>

@@ -486,3 +486,7 @@ table.dataTable thead .sorting:after {
 @keyframes rotateOutNewspaper {
     to { transform: translateZ(-3000px) rotateZ(360deg); opacity: 0; }
 }
+
+.fixed-table {
+    table-layout: fixed;
+}

@@ -48,6 +48,27 @@ function gradeSheetTeacherController($scope) {
 }
 
 app.directive('clicker', function () {
+    function changeButtonColor(event) {
+        var selfButton = event.target;
+        var selfButtonClasses = selfButton.classList;
+
+        var buttonType = "";
+
+        $(selfButtonClasses).each(function () {
+            if (this == "btn-warning") {
+                buttonType = "editActive";
+                $(selfButton).removeClass("btn-warning");
+                $(selfButton).addClass("btn-success");
+            } else if (this == "btn-success") {
+                buttonType = "editInactive";
+                $(selfButton).removeClass("btn-success");
+                $(selfButton).addClass("btn-warning");
+            }
+        });
+
+        return buttonType;
+    }
+
     return {
         restrict: 'E',
         replace: true,
@@ -56,6 +77,10 @@ app.directive('clicker', function () {
         template: '<div ng-click="editItem($event, row)" ng-transclude></div>',
         link: function (scope, element, doc) {
             scope.editItem = function (event, row) {
+                // Change the color of editItem button when clicked
+                var buttonType = changeButtonColor(event);
+                console.log("Button type: " + buttonType);
+
                 var tableRow = $(event.target.closest("tr"));
 
                 console.log(tableRow.find("#removeItem"));
