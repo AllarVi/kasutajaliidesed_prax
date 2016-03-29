@@ -49,7 +49,7 @@
 <br>
 <div class="login">
     <!-- ============ FORM ============ -->
-    <form name="registerForm" ng-submit="submitForm(email, password)" novalidate>
+    <form name="registerForm" ng-submit="submitForm(email, password, passwordAgain, firstname, lastname)" novalidate>
 
         <!-- EMAIL -->
         <input type="email"
@@ -58,12 +58,14 @@
                class="form-control"
                ng-model="email"
                ng-model-options="{ updateOn: 'blur' }"
-               ng-click="hideErrorMessages()">
+               ng-click="hideEmailFieldEmptyErrorMessage()">
         <p class="error"
            ng-show="registerForm.email.$invalid && !registerForm.email.$pristine && registerForm.email.$touched"
            class="help-block">
-            Palun sisesta korrektne email. N: juulius@ttu.ee</p>
-        <p class="error" ng-show="emailFieldEmpty">{{ emailFieldEmptyErrorMessage }}</p>
+            Palun sisesta korrektne email. <br>N: juulius@ttu.ee</p>
+        <p class="error"
+           ng-if="submittedEmail && (email == undefined || email == '') && !(registerForm.email.$invalid && !registerForm.email.$pristine && registerForm.email.$touched)">
+            {{ emailFieldEmptyErrorMessage }}</p>
 
         <!-- PASSWORD -->
         <input type="password"
@@ -71,9 +73,10 @@
                name="password"
                class="form-control"
                ng-model="password"
-               ng-click="hideErrorMessages()"
+               ng-click="hidePasswordFieldEmptyErrorMessage()"
         >
-        <p class="error" ng-show="passwordFieldEmpty">{{ passwordFieldEmptyErrorMessage}}</p>
+        <p class="error" ng-if="submittedPassword && (password == undefined || password == '')">{{
+            passwordFieldEmptyErrorMessage }}</p>
 
         <!-- PASSWORD AGAIN -->
         <input type="password"
@@ -81,9 +84,12 @@
                name="passwordAgain"
                class="form-control"
                ng-model="passwordAgain"
-               ng-click="hideErrorMessages()"
+               ng-click="hidePasswordAgainFieldEmptyErrorMessage()"
         >
-        <p class="error" ng-show="passwordAgainFieldEmpty">{{ passwordAgainFieldEmptyErrorMessage}}</p>
+        <p class="error" ng-if="password != passwordAgain && passwordAgain != undefined">{{ passwordMismatchErrorMessage
+            }}</p>
+        <p class="error" ng-if="submittedPasswordAgain && (passwordAgain == undefined || passwordAgain == '')">{{
+            passwordAgainFieldEmptyErrorMessage}}</p>
 
         <!-- EESNIMI -->
         <input type="text"
@@ -91,9 +97,10 @@
                name="firstname"
                class="form-control"
                ng-model="firstname"
-               ng-click="hideErrorMessages()"
+               ng-click="hideFirstnameFieldEmptyErrorMessage()"
         >
-        <p class="error" ng-show="firstnameFieldEmpty">{{ firstnameFieldEmptyErrorMessage}}</p>
+        <p class="error" ng-if="submittedFirstname && (firstname == undefined || firstname == '')">{{
+            firstnameFieldEmptyErrorMessage}}</p>
 
         <!-- PEREKONNANIMI -->
         <input type="text"
@@ -101,16 +108,17 @@
                name="lastname"
                class="form-control"
                ng-model="lastname"
-               ng-click="hideErrorMessages()"
+               ng-click="hideLastnameFieldEmptyErrorMessage()"
         >
-        <p class="error" ng-show="lastnameFieldEmpty">{{ lastnameFieldEmptyErrorMessage}}</p>
+        <p class="error" ng-if="submittedLastname && (lastname == undefined || lastname == '')">{{
+            lastnameFieldEmptyErrorMessage}}</p>
 
         <select class="option" id="sel1">
             <option ng-model="student">Õpilane</option>
             <option ng-model="teacher">Õpetaja</option>
         </select>
 
-        <input type="submit" value="Registreeru">
+        <input type="submit" value="{{ registerHint }}">
 
         <a class="help" href="../login/login.html">Oled juba kasutaja? Logi sisse.</a>
     </form>

@@ -47,6 +47,7 @@
     <div class="noselect">Tallinna Tehnikaülikool<span class="noselect"> - ÕIS</span></div>
 </div>
 <br>
+
 <div class="login">
     <!-- ============ FORM ============ -->
     <form name="loginForm" ng-submit="submitForm(email, password)" novalidate>
@@ -63,10 +64,10 @@
                ng-click="hideEmailFieldEmptyErrorMessage()">
         <p class="error" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched"
            class="help-block">
-            Palun sisesta korrektne email. N: xxx@xxx.xxx</p>
-        <p class="error" ng-show="emailFieldEmpty"
-           ng-if="!(loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched)">{{
-            emailFieldEmptyErrorMessage }}</p>
+            Palun sisesta korrektne email. <br> N: juulius@ttu.ee</p>
+        <p class="error"
+           ng-if="submittedEmail && (email == undefined || email == '') && !(loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched)">
+            {{ emailFieldEmptyErrorMessage }}</p>
         <!--</div>-->
 
         <!-- PASSWORD -->
@@ -80,7 +81,8 @@
                ng-model="password"
                ng-click="hidePasswordFieldEmptyErrorMessage()"
         >
-        <p class="error" ng-show="passwordFieldEmpty">{{ passwordFieldEmptyErrorMessage}}</p>
+        <p class="error" ng-if="submittedPassword && (password == undefined || password == '')">{{
+            passwordFieldEmptyErrorMessage}}</p>
         <!--<p ng-show="passwordWasNotFilled"> {{ passwordWasNotFilledMessage }}</p>-->
         <!--ng-minlength="3" ng-maxlength="8"-->
         <!--<p ng-show="loginForm.password.$error.minlength" class="help-block">Password is too short.</p>-->
@@ -100,7 +102,7 @@
         <!--</div>-->
         <!--</div>-->
 
-        <input type="submit" value="{{failedLogin}}">
+        <input type="submit" value="{{loginHint}}">
 
         <a class="help" href="#">Unustasid parooli?</a>
         <a class="help" href="../register/register.html">Registreeru</a>
