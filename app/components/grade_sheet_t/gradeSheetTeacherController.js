@@ -40,6 +40,7 @@ function gradeSheetTeacherController($scope) {
     //remove to the real data holder
     $scope.removeItem = function removeItem(row) {
         var index = $scope.rowCollection.indexOf(row);
+        console.log("Row index: " + index);
         if (index !== -1) {
             $scope.rowCollection.splice(index, 1);
         }
@@ -57,6 +58,8 @@ app.directive('clicker', function () {
             scope.editItem = function (event, row) {
                 var tableRow = $(event.target.closest("tr"));
 
+                console.log(tableRow.find("#removeItem"));
+
                 console.log(tableRow.context.children.length);
 
                 angular.forEach(tableRow.context.children, function (value, key) {
@@ -65,6 +68,7 @@ app.directive('clicker', function () {
 
                         var currentValue = tableCell.text();
                         console.log(key);
+                        console.log(tableCell.text());
                         tableCell.html("<input id='currentInput' type='text' value='" + currentValue + "'/>");
                         // if (row.id == value.id) {
                         //     var newFirstName = "Allar";
