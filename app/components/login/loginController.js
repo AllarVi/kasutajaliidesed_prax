@@ -1,5 +1,7 @@
 app.controller("loginController", function ($scope) {
 
+    $scope.data = {};
+
     $scope.student = "student@mail.com";
     $scope.studentPassword = "student";
 
@@ -23,6 +25,9 @@ app.controller("loginController", function ($scope) {
         $scope.loginHint = "Logi sisse";
     };
 
+    $scope.verifyUser = function () {
+
+    };
     // $scope.hideErrorMessages = function () {
     //     $scope.emailFieldEmpty = false;
     //     $scope.passwordFieldEmpty = false;

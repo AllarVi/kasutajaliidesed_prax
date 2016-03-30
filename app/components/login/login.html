@@ -2,187 +2,56 @@
 <html lang="en" ng-app="ois">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>UusÕIS</title>
-
-    <!-- ==== STYLESHEETS ==== -->
-
-    <!-- Login custom CSS-->
-    <link href="login.css" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Tallinna Tehnikaülikool - ÕIS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../../../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../../../dist/css/ois.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- ==== END OF STYLESHEETS ==== -->
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
+    <link href="login.css" rel="stylesheet">
 </head>
 
 <body ng-controller="loginController">
 
-<div class="body"></div>
-<div class="grad"></div>
-<div class="header">
-    <div class="noselect">Tallinna Tehnikaülikool<span class="noselect"> - ÕIS</span></div>
-</div>
-<br>
-
-<div class="login">
-    <!-- ============ FORM ============ -->
-    <form name="loginForm" ng-submit="submitForm(email, password)" novalidate>
-
-        <!-- EMAIL -->
-        <!--<div class="form-group" required>-->
-        <!--&lt;!&ndash;<label>Email</label>&ndash;&gt;-->
-        <input type="email"
-               placeholder="{{ emailHint }}"
-               name="email"
-               class="form-control"
-               ng-model="email"
-               ng-model-options="{ updateOn: 'blur' }"
-               ng-click="hideEmailFieldEmptyErrorMessage()">
-        <p class="error" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched"
-           class="help-block">
-            Palun sisesta korrektne email. <br> N: juulius@ttu.ee</p>
+<form name="loginForm" novalidate ng-submit="submitForm(email, password)">
+    <div class="loginpanel">
+        <div class="txt">
+            <input name="email" ng-model="email" id="user" type="email" placeholder="{{ emailHint }}"
+                   ng-click="hideEmailFieldEmptyErrorMessage()"/>
+            <label for="user" class="entypo-user"></label>
+            <!--<p class="error" ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched">-->
+            <!--Palun sisesta korrektne email. N: juulius@ttu.ee</p>-->
         <p class="error"
-           ng-if="submittedEmail && (email == undefined || email == '') && !(loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched)">
+           ng-if="submittedEmail && (email == undefined || email == '') && !(email.$invalid && !email.$pristine && email.$touched)">
             {{ emailFieldEmptyErrorMessage }}</p>
-        <!--</div>-->
-
-        <!-- PASSWORD -->
-        <!--<div class="form-group" required-->
-        <!--ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">-->
-        <!--<label>Parool</label>-->
-        <input type="password"
-               placeholder="{{ passwordHint }}"
-               name="password"
-               class="form-control"
-               ng-model="password"
-               ng-click="hidePasswordFieldEmptyErrorMessage()"
-        >
+        </div>
+        <div class="txt">
+            <input name="password" ng-model="password" id="pwd" type="password" placeholder="{{ passwordHint }}"
+                   ng-click="hidePasswordFieldEmptyErrorMessage()"/>
+            <label for="pwd" class="entypo-lock"></label>
         <p class="error" ng-if="submittedPassword && (password == undefined || password == '')">{{
             passwordFieldEmptyErrorMessage}}</p>
-        <!--<p ng-show="passwordWasNotFilled"> {{ passwordWasNotFilledMessage }}</p>-->
-        <!--ng-minlength="3" ng-maxlength="8"-->
-        <!--<p ng-show="loginForm.password.$error.minlength" class="help-block">Password is too short.</p>-->
-        <!--<p ng-show="loginForm.password.$error.maxlength" class="help-block">Password is too long.</p>-->
-        <!--</div>-->
+        </div>
+        <div class="buttons">
+            <input type="submit" value="{{loginHint}}"/>
+    <span>
+      <a href="../register/register.html" class="entypo-user-add register">Registreeru</a>
+    </span>
+        </div>
 
-        <!--<div class="form-group">-->
-        <!--<div class="checkbox">-->
-        <!--<label>-->
-        <!--<input name="remember" type="checkbox" value="Remember Me" ng-model="user.remember">Jäta-->
-        <!--mind meelde-->
-        <!--</label>-->
-        <!--</div>-->
-        <!--<div class="etc-login-form">-->
-        <!--<p>Unustasid parooli? <a href="#">lähtesta</a></p>-->
-        <!--<p>Uus kasutaja? <a href="../register/register.html">registreeru</a></p>-->
-        <!--</div>-->
-        <!--</div>-->
+        <div class="hr">
+            <div></div>
+            <div>VÕI</div>
+            <div></div>
+        </div>
 
-        <input type="submit" value="{{loginHint}}">
-
-        <a class="help" href="#">Unustasid parooli?</a>
-        <a class="help" href="../register/register.html">Registreeru</a>
-
-    </form>
-
-    <!-- =========== END OF FORM ========== -->
+        <div class="social">
+            <a href="javascript:void(0)" class="facebook"></a>
+            <a href="javascript:void(0)" class="twitter"></a>
+            <a href="javascript:void(0)" class="googleplus"></a>
+        </div>
 </div>
-
-<!--<div class="container">-->
-<!--<div class="row">-->
-
-<!--<div class="col-md-4 col-md-offset-4">-->
-<!--<div class="login-panel panel panel-default">-->
-<!--<div class="panel-heading">-->
-<!--<h3 class="panel-title">Tere tulemast!</h3>-->
-<!--</div>-->
-<!--<div class="panel-body">-->
-
-<!--&lt;!&ndash; ============ FORM ============ &ndash;&gt;-->
-
-<!--<form name="loginForm" ng-submit="submitForm(email, password)" novalidate>-->
-
-<!--&lt;!&ndash; EMAIL &ndash;&gt;-->
-<!--<div class="form-group" required>-->
-<!--&lt;!&ndash;<label>Email</label>&ndash;&gt;-->
-<!--<input type="email"-->
-<!--placeholder="{{ emailHint }}"-->
-<!--name="email" class="form-control"-->
-<!--ng-model="email"-->
-<!--ng-model-options="{ updateOn: 'blur' }"-->
-<!--ng-click="hideErrorMessages()">-->
-<!--<p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine && loginForm.email.$touched"-->
-<!--class="help-block">-->
-<!--Palun sisesta korrektne email. N: xxx@xxx.xxx</p>-->
-<!--<p ng-show="emailFieldEmpty">{{ emailFieldEmptyErrorMessage }}</p>-->
-<!--</div>-->
-
-<!--&lt;!&ndash; PASSWORD &ndash;&gt;-->
-<!--<div class="form-group" required-->
-<!--ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">-->
-<!--&lt;!&ndash;<label>Parool</label>&ndash;&gt;-->
-<!--<input type="password"-->
-<!--placeholder="{{ passwordHint }}"-->
-<!--name="password"-->
-<!--class="form-control"-->
-<!--ng-model="password"-->
-<!--ng-click="hideErrorMessages()"-->
-<!--&gt;-->
-<!--<p ng-show="passwordFieldEmpty">{{ passwordFieldEmptyErrorMessage}}</p>-->
-<!--&lt;!&ndash;<p ng-show="passwordWasNotFilled"> {{ passwordWasNotFilledMessage }}</p>&ndash;&gt;-->
-<!--&lt;!&ndash;ng-minlength="3" ng-maxlength="8"&ndash;&gt;-->
-<!--&lt;!&ndash;<p ng-show="loginForm.password.$error.minlength" class="help-block">Password is too short.</p>&ndash;&gt;-->
-<!--&lt;!&ndash;<p ng-show="loginForm.password.$error.maxlength" class="help-block">Password is too long.</p>&ndash;&gt;-->
-<!--</div>-->
-
-<!--<div class="form-group">-->
-<!--<div class="checkbox">-->
-<!--<label>-->
-<!--<input name="remember" type="checkbox" value="Remember Me" ng-model="user.remember">Jäta-->
-<!--mind meelde-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="etc-login-form">-->
-<!--<p>Unustasid parooli? <a href="#">lähtesta</a></p>-->
-<!--<p>Uus kasutaja? <a href="../register/register.html">registreeru</a></p>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<button type="submit" class="btn btn-lg btn-success btn-block">Logi sisse</button>-->
-
-<!--</form>-->
-
-<!--&lt;!&ndash; =========== END OF FORM ========== &ndash;&gt;-->
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
+    <!--<span class="resp-info"></span>-->
+</form>
 
 <!-- jQuery -->
 <script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
@@ -210,37 +79,4 @@
 <script src="../../../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 </body>
-
 </html>
-<!--<div class="col-md-4 col-md-offset-4">-->
-<!--<div class="login-panel panel panel-default">-->
-<!--<div class="panel-heading">-->
-<!--<h3 class="panel-title">Tere tulemast!</h3>-->
-<!--</div>-->
-<!--<div class="panel-body">-->
-<!--<form name="form" role="form">-->
-<!--<fieldset>-->
-<!--<div class="form-group">-->
-<!--<input class="form-control" placeholder="{{ emeil }}" type="email" ng-model="email"-->
-<!--autofocus>-->
-<!--</div>-->
-<!--<div class="form-group">-->
-<!--<input class="form-control" placeholder="{{ parool }}" type="password"-->
-<!--ng-model="password" value="">-->
-<!--</div>-->
-<!--<div class="checkbox">-->
-<!--<label>-->
-<!--<input name="remember" type="checkbox" value="Remember Me">Jäta mind meelde-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="etc-login-form">-->
-<!--<p>Unustasid parooli? <a href="#">lähtesta</a></p>-->
-<!--<p>Uus kasutaja? <a href="../register/register.html">registreeru</a></p>-->
-<!--</div>-->
-<!--&lt;!&ndash; Change this to a button or input when using this as a form &ndash;&gt;-->
-<!--<button ng-click="login()" class="btn btn-lg btn-success btn-block">Logi sisse</button>-->
-<!--</fieldset>-->
-<!--</form>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
