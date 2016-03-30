@@ -9,47 +9,58 @@
     <!-- /.row -->
     <div ng-controller="studyResultsController">
         <script type="text/ng-template" id="group-template.html">
-            <div class="panel {{panelClass || 'panel-default'}}">
-                <div class="panel-heading">
-                    <h4 class="panel-title" style="color:#fa39c3">
-                        <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()"
-                           uib-accordion-transclude="heading"><span
-                                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
-                    </h4>
-                </div>
-                <div class="panel-collapse collapse" uib-collapse="!isOpen">
-                    <div class="panel-body" style="text-align: right" ng-transclude></div>
+            <div
+                    class="panel" ng-class="panelClass || 'panel-default'">
+                <div role="tab" id="{{::headingId}}" aria-selected="{{isOpen}}" class="panel-heading"
+                     ng-keypress="toggleOpen($event)" ng-click="toggleOpen()"><h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" href aria-expanded="{{isOpen}}"
+                       aria-controls="{{::panelId}}"
+                       tabindex="0" class="accordion-toggle"
+                       uib-accordion-transclude="heading"><span uib-accordion-header
+                                                                ng-class="{'text-muted': isDisabled}">{{heading}}</span></a>
+                </h4></div>
+                <div id="{{::panelId}}" aria-labelledby="{{::headingId}}" aria-hidden="{{!isOpen}}" role="tabpanel"
+                     class="panel-collapse collapse" uib-collapse="!isOpen">
+                    <div class="panel-body" ng-transclude></div>
                 </div>
             </div>
         </script>
 
         <uib-accordion close-others="oneAtATime">
-            <uib-accordion-group heading="Üldine" is-open="status.isFirstOpen"
-                                 is-disabled="status.isFirstDisabled">
-                Vajuta õppeaine nimetusele.
-            </uib-accordion-group>
-            <uib-accordion-group heading="{{group.title}}" ng-repeat="group in groups">
+            <!--<uib-accordion-group heading="Üldine" is-open="status.isFirstOpen"-->
+            <!--is-disabled="status.isFirstDisabled">-->
+            <!--Vajuta õppeaine nimetusele.-->
+            <!--</uib-accordion-group>-->
+            <uib-accordion-group ng-repeat="group in groups"
+                                 template-url="group-template.html">
+                <uib-accordion-heading>
+                    <span class="noselect">{{group.title}}</span>
+                </uib-accordion-heading>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
                         <tr>
                             <th>Kirjeldus</th>
                             <th>Tulemus</th>
+                            <th>Kuupäev</th>
+                            <th>Õppejõud</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr ng-repeat="grade in group.content.grades track by $index">
                             <td>{{grade[0]}}</td>
                             <td>{{grade[1]}}</td>
+                            <td>{{grade[2]}}</td>
+                            <td>{{grade[3]}}</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </uib-accordion-group>
-            <uib-accordion-group heading="(testing) Dynamic Body Content">
-                <button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>
-                <div ng-repeat="item in items">{{item}}</div>
-            </uib-accordion-group>
+            <!--<uib-accordion-group heading="(testing) Dynamic Body Content">-->
+            <!--<button type="button" class="btn btn-default btn-sm" ng-click="addItem()">Add Item</button>-->
+            <!--<div ng-repeat="item in items">{{item}}</div>-->
+            <!--</uib-accordion-group>-->
         </uib-accordion>
     </div>
 </div>

@@ -7,9 +7,9 @@ function studyResultsController($scope) {
 
     /* Open one item at a time */
     $scope.oneAtATime = false;
-    
+
     $scope.items = ['Item 1', 'Item 2', 'Item 3'];
-    
+
     $scope.addItem = function () {
         var newItemNo = $scope.items.length + 1;
         $scope.items.push('Item ' + newItemNo);
@@ -22,19 +22,14 @@ function studyResultsController($scope) {
 
     /* We hold study results view data here */
     $scope.groups = [];
-    
+
     var studyResultsJSON = [
         {
-            subject: "Andmebaasid II",
+            subject: "Kasutajaliidesed",
             contents: [{
                 grades: [
-                    ["HW1", 2],
-                    ["HW2", 3],
-                    ["HW3", 5],
-                    ["KT1", 4],
-                    ["HW4", 1],
-                    ["HW5", 4],
-                    ["KT2", 3]
+                    ["labor1", 5, '30.03.2016', 'Jaagup Irve'],
+                    ["labor2", 5, '30.03.2016', 'Jaagup Irve']
                 ]
             }]
         },
@@ -42,29 +37,34 @@ function studyResultsController($scope) {
             subject: "Füüsika I",
             contents: [{
                 grades: [
-                    ["HW1", 2],
-                    ["HW2", 3],
-                    ["HW3", 5],
-                    ["KT1", 4],
-                    ["HW4", 1],
-                    ["HW5", 4],
-                    ["KT2", 3]
+                    ["HW1", 2, '29.03.2016', 'Arvo Mere'],
+                    ["HW2", 3, '29.03.2016', 'Arvo Mere'],
+                    ["HW3", 5, '29.03.2016', 'Arvo Mere'],
+                    ["KT1", 4, '29.03.2016', 'Arvo Mere'],
+                    ["HW4", 1, '29.03.2016', 'Arvo Mere'],
+                    ["HW5", 4, '29.03.2016', 'Arvo Mere'],
+                    ["KT2", 3, '29.03.2016', 'Arvo Mere']
                 ]
             }]
         },
         {
-            subject: "Kasutajaliidesed",
+            subject: "Andmebaasid II",
             contents: [{
                 grades: [
-                    ["labor1", 5],
-                    ["labor2", 5]
+                    ["HW1", 2, '28.03.2016', 'Erki Eessaar'],
+                    ["HW2", 3, '28.03.2016', 'Erki Eessaar'],
+                    ["HW3", 5, '28.03.2016', 'Erki Eessaar'],
+                    ["KT1", 4, '28.03.2016', 'Erki Eessaar'],
+                    ["HW4", 1, '28.03.2016', 'Erki Eessaar'],
+                    ["HW5", 4, '28.03.2016', 'Erki Eessaar'],
+                    ["KT2", 3, '28.03.2016', 'Erki Eessaar']
                 ]
             }]
         }
     ];
 
     $scope.studyResults = angular.fromJson(studyResultsJSON);
-    
+
     for (var i = 0; i < $scope.studyResults.length; i++) {
         var item = {
             /* subject refers to the title of the subject*/

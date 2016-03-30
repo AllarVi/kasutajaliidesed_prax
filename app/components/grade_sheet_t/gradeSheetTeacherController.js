@@ -3,17 +3,17 @@ app.controller('gradeSheetTeacherController', ['$scope', gradeSheetTeacherContro
 function gradeSheetTeacherController($scope) {
     $scope.module_title = 'Kasutajaliidesed - Rühm A';
 
-    var firstnames = ['Laurent', 'Blandine', 'Olivier', 'Max'];
+    var firstnames = ['Allar', 'Erko', 'Mari', 'Max', 'Teele'];
     var lastnames = ['Renard', 'Faivre', 'Frere', 'Eponge'];
-    var dates = ['1', '3', '5', '2'];
+    var grades = ['1', '3', '5', '2', '0', 'Hindamata'];
     var id = 1;
 
     function generateRandomItem(id) {
 
         var firstname = firstnames[Math.floor(Math.random() * 3)];
         var lastname = lastnames[Math.floor(Math.random() * 3)];
-        var birthdate = dates[Math.floor(Math.random() * 3)];
-        var balance = Math.floor(Math.random() * 2000);
+        var birthdate = grades[Math.floor(Math.random() * 6)];
+        var balance = grades[Math.floor(Math.random() * 3)];
 
         return {
             id: id,
@@ -31,13 +31,13 @@ function gradeSheetTeacherController($scope) {
         $scope.rowCollection.push(generateRandomItem(id));
     }
 
-    //add to the real data holder
+    // add to the real data holder
     $scope.addRandomItem = function addRandomItem() {
         $scope.rowCollection.push(generateRandomItem(id));
         id++;
     };
 
-    //remove to the real data holder
+    // remove to the real data holder
     $scope.removeItem = function removeItem(row) {
         var index = $scope.rowCollection.indexOf(row);
         console.log("Row index: " + index);
@@ -83,29 +83,31 @@ app.directive('clicker', function () {
 
                 var tableRow = $(event.target.closest("tr"));
 
-                console.log(tableRow.find("#removeItem"));
-
-                console.log(tableRow.context.children.length);
+                console.log("Table row cell count: " + tableRow.context.children.length);
 
                 angular.forEach(tableRow.context.children, function (value, key) {
                     if (key != tableRow.context.children.length - 1) {
                         var tableCell = angular.element($(value)[0]);
+                        var currentValue;
 
-                        var currentValue = tableCell.text();
-                        console.log(key);
-                        console.log(tableCell.text());
-                        tableCell.html("<input id='currentInput' type='text' value='" + currentValue + "'/>");
-                        // if (row.id == value.id) {
-                        //     var newFirstName = "Allar";
-                        //     value.firstName = newFirstName;
-                        //     scope.rowCollection.push(value);
-                        //     console.log(value.firstName);
-                        // }
+                        // Turn edit mode on/off
+                        if (buttonType == "editInactive") {
+                            currentValue = tableCell.find("input").val();
+                            tableCell.html(currentValue);
+                        } else if (buttonType == "editActive") {
+                            currentValue = tableCell.text();
+                            tableCell.html("<input id='currentInput' type='text' value='" + currentValue + "'/>");
+                        }
+
+                        console.log("Value id: " + value.id + " Row id: " + row.id);
+                        if (row.id == value.id) {
+                            var newFirstName = "Allar";
+                            value.firstName = newFirstName;
+                            scope.rowCollection.push(value);
+                            console.log(value.firstName);
+                        }
                     }
                 });
-
-                // element[0].style.backgroundColor = 'red';
-                // angular.element(element[0]).find('a').addClass('magic');
             }
         }
     }
