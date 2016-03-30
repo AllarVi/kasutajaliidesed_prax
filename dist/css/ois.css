@@ -500,3 +500,7 @@ table.dataTable thead .sorting:after {
     user-select: none;           /* non-prefixed version, currently
                                   not supported by any browser */
 }
+
+.work-submission-form {
+    max-width: 50%;
+}

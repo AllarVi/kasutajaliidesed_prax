@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{module_title}}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div ng-controller="workSubmissionController">
+        <form novalidate role="form" action="" class="work-submission-form">
+
+            <div class="form-group">
+                <img height="100" width="100" ng-src="{{previewImage}}"><br><br>
+                <file-field class="btn btn-primary" ng-model="uploadFile" preview="previewImage">Lisa töö*</file-field>
+                {{uploadFile.name}}
+            </div>
+
+            <div class="form-group">
+                <label>Vali aine</label>
+                <select class="form-control">
+                    <option>Andmebaasid II</option>
+                    <option>Kasutajaliidesed</option>
+                    <option>Füüsika</option>
+                    <option>Võrgurakendused I</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Kirjeldus*</label>
+                <textarea id="txt" name="description" class="form-control" rows="3 required"></textarea>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" ng-model="checked" value="">*Kinnitan, et tehtud töö ei
+                        ole plagiaat ja pole kasutatud lubamatut abi
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-success" ng-model="button" ng-disabled="!checked">Esita</button>
+            <button class="btn btn-danger"
+                    confirmed-click="reset()"
+                    ng-confirm-click="Oled kindel?">Tühista
+            </button>
+
+        </form>
+    </div>
+</div>
