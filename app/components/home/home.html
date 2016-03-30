@@ -263,17 +263,12 @@
         </ul>
         <!-- /.navbar-top-links -->
 
-        <!-- include left panel -->
-        <div ng-include="'../../../app/shared/left_panel/left_panel_teacher.html'" ng-controller="leftPanelController"></div>
 
-        <!--<div ng-include="'../../../app/shared/left_panel/left_panel_student.html'" ng-controller="leftPanelController"></div>-->
+        <div ng-if="isRoleTeacher()" ng-include="'../../../app/shared/left_panel/left_panel_teacher.html'"
+             ng-controller="leftPanelController"></div>
 
-        <!--<div ng-if="getRole() == ROLE_STUDENT">-->
-            <!--<div ng-include="'../../../app/shared/left_panel/left_panel_student.html'" ng-controller="leftPanelController"></div>-->
-        <!--</div>-->
-        <!--<div ng-if="getRole() == ROLE_TEACHER">-->
-            <!--<div ng-include="'../../../app/shared/left_panel/left_panel_teacher.html'" ng-controller="leftPanelController"></div>-->
-        <!--</div>-->
+        <div ng-if="isRoleStudent()" ng-include="'../../../app/shared/left_panel/left_panel_student.html'"
+             ng-controller="leftPanelController"></div>
     </nav>
 
     <!-- /#page-wrapper -->

@@ -1,6 +1,4 @@
-var app = angular.module("ois", ['ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate', 'ngTouch', 'smart-table'])
-    .constant('ROLE_STUDENT', 'student')
-    .constant('ROLE_TEACHER', 'teacher');
+var app = angular.module("ois", ['ngRoute', 'ui.bootstrap', 'ui.bootstrap.tpls', 'ngAnimate', 'ngTouch', 'smart-table']);
 
 // configure our routes
 app.config(function ($routeProvider) {
@@ -17,7 +15,7 @@ app.config(function ($routeProvider) {
             templateUrl: '../../../app/components/study_results/study_results.html',
             controller: 'studyResultsController'
         })
-        // route for the study results module
+        // route for the teacher grade sheet module
         .when('/grade_sheet_t', {
             templateUrl: '../../../app/components/grade_sheet_t/grade_sheet_t.html',
             controller: 'gradeSheetTeacherController'

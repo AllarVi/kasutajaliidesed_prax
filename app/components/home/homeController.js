@@ -1,14 +1,21 @@
 app.controller("homeController", ['$rootScope', '$scope', homeController]);
 
-function homeController($rootScope, $scope, ROLE_STUDENT, ROLE_TEACHER) {
-    $scope.ROLE_STUDENT = ROLE_STUDENT;
-    $scope.ROLE_TEACHER = ROLE_TEACHER;
+function homeController($rootScope, $scope) {
+    $scope.ROLE_STUDENT = "student";
+    $scope.ROLE_TEACHER = "teacher";
 
     $scope.module_title = "Uudised";
 
-    $scope.getRole = function () {
-        /* TODO: Use service to determine user role */
-        return "student";
+    $scope.role = "student";
+    
+    $scope.isRoleTeacher = function () {
+        return $scope.role == $scope.ROLE_TEACHER;
+        
+    };
+
+    $scope.isRoleStudent = function () {
+        return $scope.role == $scope.ROLE_STUDENT;
+        
     };
 }
 
