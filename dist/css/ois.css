@@ -504,3 +504,8 @@ table.dataTable thead .sorting:after {
 .work-submission-form {
     max-width: 50%;
 }
+
+#currentInput {
+    max-width: 60%;
+    margin-right: 0.3em;
+}

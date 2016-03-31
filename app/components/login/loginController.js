@@ -1,4 +1,4 @@
-app.controller("loginController", function ($scope) {
+app.controller("loginController", function ($scope, productService) {
 
     $scope.data = {};
 
@@ -45,6 +45,7 @@ app.controller("loginController", function ($scope) {
         // check to make sure the form is completely valid
         if ($scope.loginForm.$valid && !$scope.loginForm.$pristine && ((email == $scope.student && password == $scope.studentPassword) || (email == $scope.teacher && password == $scope.teacherPassword))) {
             window.location.href = "../../../app/components/home/home.html";
+            productService.addProduct("student");
         } else {
             $scope.loginHint = "Vigane sisenemine";
         }
