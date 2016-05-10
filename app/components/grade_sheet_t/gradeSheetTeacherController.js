@@ -4,7 +4,7 @@ function gradeSheetTeacherController($scope) {
     $scope.module_title = 'Kasutajaliidesed - Rühm A';
 
     var firstnames = ['Allar', 'Erko', 'Mari', 'Max', 'Teele'];
-    var lastnames = ['Renard', 'Faivre', 'Frere', 'Eponge'];
+    var lastnames = ['134302', '135066', '134298', '135039'];
     var grades = ['1', '3', '5', '2', '0', 'Hindamata'];
     var id = 1;
 
@@ -13,7 +13,7 @@ function gradeSheetTeacherController($scope) {
         var firstname = firstnames[Math.floor(Math.random() * 3)];
         var lastname = lastnames[Math.floor(Math.random() * 3)];
         var birthdate = grades[Math.floor(Math.random() * 6)];
-        var balance = grades[Math.floor(Math.random() * 3)];
+        var balance = grades[Math.floor(Math.random() * 6)];
 
         return {
             id: id,
@@ -96,16 +96,21 @@ app.directive('clicker', function () {
                             tableCell.html(currentValue);
                         } else if (buttonType == "editActive") {
                             currentValue = tableCell.text();
-                            tableCell.html("<input id='currentInput' type='text' value='" + currentValue + "'/>");
+                            if (currentValue == "Hindamata") {
+                                tableCell.html("<input id='currentInput' type='text' placeholder='" + currentValue + "'/><a href='/test.txt' download><button type='button' class='btn btn-primary btn-circle btn-xs'><i class='fa fa-download'></i>\
+                            </button></a>");
+                            } else {
+                                tableCell.html("<input id='currentInput' type='text' value='" + currentValue + "'/>");
+                            }
                         }
-
-                        console.log("Value id: " + value.id + " Row id: " + row.id);
-                        if (row.id == value.id) {
-                            var newFirstName = "Allar";
-                            value.firstName = newFirstName;
-                            scope.rowCollection.push(value);
-                            console.log(value.firstName);
-                        }
+                        //
+                        // console.log("Value id: " + value.id + " Row id: " + row.id);
+                        // if (row.id == value.id) {
+                        //     var newFirstName = "Allar";
+                        //     value.firstName = newFirstName;
+                        //     scope.rowCollection.push(value);
+                        //     console.log(value.firstName);
+                        // }
                     }
                 });
             }

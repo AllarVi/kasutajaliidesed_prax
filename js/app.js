@@ -1,4 +1,26 @@
-var app = angular.module("LegsApp", []);
+var app = angular.module("LegsApp", ['ngRoute']);
+
+app.config(
+    ["$routeProvider", function ($routeProvider) {
+        $routeProvider
+            .when("/list", {templateUrl: 'list.html'})
+            .when("/form", {templateUrl: 'form.html'})
+            .otherwise({redirectTo: '/list'});
+    }]
+);
+
+app.controller("dogEmailController", function ($scope) {
+    $scope.doglist = [
+        {name: 'Fido', email: 'fido@example.com'},
+        {name: 'Muri', email: 'muri@example.com'}
+    ];
+    $scope.dog = {};
+
+    $scope.addDog = function () {
+        $scope.doglist.push($scope.dog);
+        $scope.dog = {};
+    };
+});
 
 app.controller("TabsController", function () {
     this.tabNumber = 2;

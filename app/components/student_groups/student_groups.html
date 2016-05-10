@@ -1,0 +1,131 @@
+<div id="page-wrapper">
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{module_title}}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div ng-controller="studentGroupsController">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Tudengite grupid
+                    <span class="pull-right"><a href="#/student_groups">
+                        <button type="button" class="btn btn-xs btn-primary">Lisa</button>
+                    </a></span>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body ng-scope">
+                    <div class="table-responsive">
+                        <div id="dataTables-example_wrapper"
+                             class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_length" id="dataTables-example_length"><label>Kuva <select
+                                            name="dataTables-example_length" aria-controls="dataTables-example"
+                                            class="form-control input-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> tulemust</label></div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div id="dataTables-example_filter" class="dataTables_filter"><label>Otsi:<input
+                                            type="search" class="form-control input-sm" placeholder=""
+                                            aria-controls="dataTables-example"></label></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-striped table-bordered table-hover dataTable no-footer"
+                                           id="dataTables-example" role="grid"
+                                           aria-describedby="dataTables-example_info">
+                                        <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1" aria-sort="ascending"
+                                                aria-label="Liikmed: activate to sort column descending"
+                                                style="width: 117px;">Liikmed
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Aine: activate to sort column ascending"
+                                                style="width: 107px;">Aine
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Projekt: activate to sort column ascending"
+                                                style="width: 47px;">Projekt
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Tähtaeg: activate to sort column ascending"
+                                                style="width: 70px;">Tähtaeg
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Punkte: activate to sort column ascending"
+                                                style="width: 46px;">Punkte
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example"
+                                                rowspan="1" colspan="1"
+                                                aria-label="Hinne: activate to sort column ascending"
+                                                style="width: 68px;">Hinne
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr role="row">
+                                            <th>Allar Viinamäe, Erko Teor
+                                            </th>
+                                            <th>Kasutajaliidesed
+                                            </th>
+                                            <th>Labor 1
+                                            </th>
+                                            <th>31.03.2016
+                                            </th>
+                                            <th>30
+                                            </th>
+                                            <th>5
+                                            </th>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="dataTables_info" id="dataTables-example_info" role="status"
+                                         aria-live="polite">Kokku 1 tulemust, kuvan 1 ... 10
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="dataTables_paginate paging_simple_numbers"
+                                         id="dataTables-example_paginate">
+                                        <ul class="pagination">
+                                            <li class="paginate_button previous disabled"
+                                                aria-controls="dataTables-example" tabindex="0"
+                                                id="dataTables-example_previous"><a href="#/student_groups">Eelmine</a>
+                                            </li>
+                                            <li class="paginate_button active" aria-controls="dataTables-example"
+                                                tabindex="0"><a href="#/student_groups">1</a></li>
+                                            <li class="paginate_button next disabled" aria-controls="dataTables-example"
+                                                tabindex="0" id="dataTables-example_next"><a href="#/student_groups">Järgmine</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+    </div>
+</div>
