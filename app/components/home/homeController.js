@@ -61,7 +61,24 @@ function homeController($rootScope, $scope, $routeParams, $http) {
     });
 
     $scope.logout = function () {
-        
+        var req = {
+            method: 'POST',
+            url: 'http://localhost:8080/api/logout',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                userEmail: userName
+            }
+        };
+
+        $http(req).then(function (success) {
+            console.log("Kasutaja välja logimine õnnestus!");
+
+            window.location.href = "../../../app/components/login/login.html";
+        }, function () {
+            console.log("Kasutaja välja logimine ebaõnnestus!");
+        });
     }
 }
 
