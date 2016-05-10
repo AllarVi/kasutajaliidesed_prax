@@ -1,6 +1,18 @@
-<form novalidate>
-    <h2>{{doglist}}</h2>
-    Name: <input ng-model="dog.name" type="text"><br>
-    E-post: <input ng-model="dog.email" type="email"><br>
-    <input type="submit" value="Lisa koer" ng-click="addDog()">
+<form name="myForm" novalidate>
+    <!--<h2>{{doglist}}</h2>-->
+    <p>Name:
+        <input name="myName" ng-model="dog.name" type="text" required>
+        <span ng-show="myForm.myName.$touched && myForm.myName.$invalid">Dogs usually have names.</span>
+    </p>
+
+    <p>E-post:
+        <input name="myEmail" ng-model="dog.email" type="email" required>
+        <span ng-show="myForm.myEmail.$touched && myForm.myEmail.$invalid">Valid email is required.</span>
+    </p>
+
+    <p>
+        <input type="submit"
+               ng-disabled="myForm.myName.$invalid ||
+ myForm.myEmail.$invalid || myForm.$pristine" value="Lisa koer" ng-click="addDog(); myForm.$setUntouched()">
+    </p>
 </form>

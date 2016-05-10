@@ -24,8 +24,7 @@ app.config(function ($routeProvider) {
 
     // route for the dashboard module
         .when('/', {
-            templateUrl: '../../../app/components/dashboard/dashboard.html',
-            controller: 'homeController'
+            templateUrl: '../../../app/components/dashboard/dashboard.html'
         })
 
         // route for the study results module

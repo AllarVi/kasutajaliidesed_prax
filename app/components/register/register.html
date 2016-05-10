@@ -20,25 +20,26 @@
             <label for="user" class="entypo-user"></label>
             <!--<p class="error" ng-show="registerForm.email.$invalid && !registerForm.email.$pristine && registerForm.email.$touched">-->
             <!--Palun sisesta korrektne email. N: juulius@ttu.ee</p>-->
-        <p class="error"
-           ng-if="submittedEmail && (email == undefined || email == '') && !(email.$invalid && !email.$pristine && email.$touched)">
-            {{ emailFieldEmptyErrorMessage }}</p>
+            <p class="error"
+               ng-if="submittedEmail && (email == undefined || email == '') && !(email.$invalid && !email.$pristine && email.$touched)">
+                {{ emailFieldEmptyErrorMessage }}</p>
         </div>
         <div class="txt">
             <input name="password" ng-model="password" id="pwd" type="password" placeholder="{{ passwordHint }}"
                    ng-click="hidePasswordFieldEmptyErrorMessage()"/>
             <label for="pwd" class="entypo-lock"></label>
-        <p class="error" ng-if="submittedPassword && (password == undefined || password == '')">{{
-            passwordFieldEmptyErrorMessage}}</p>
+            <p class="error" ng-if="submittedPassword && (password == undefined || password == '')">{{
+                passwordFieldEmptyErrorMessage}}</p>
         </div>
         <div class="txt">
             <input name="passwordAgain" ng-model="passwordAgain" id="pwd" type="password"
                    placeholder="{{ passwordAgainHint }}" ng-click="hidePasswordAgainFieldEmptyErrorMessage()"/>
             <label for="pwd" class="entypo-lock"></label>
-        <p class="error" ng-if="password != passwordAgain && passwordAgain != undefined">{{ passwordMismatchErrorMessage
-            }}</p>
-        <p class="error" ng-if="submittedPasswordAgain && (passwordAgain == undefined || passwordAgain == '')">{{
-            passwordAgainFieldEmptyErrorMessage}}</p>
+            <p class="error" ng-if="password != passwordAgain && passwordAgain != undefined">{{
+                passwordMismatchErrorMessage
+                }}</p>
+            <p class="error" ng-if="submittedPasswordAgain && (passwordAgain == undefined || passwordAgain == '')">{{
+                passwordAgainFieldEmptyErrorMessage}}</p>
         </div>
         <div class="buttons">
             <input type="submit" value="{{registerHint}}"/>
@@ -58,7 +59,7 @@
             <a href="javascript:void(0)" class="twitter"></a>
             <a href="javascript:void(0)" class="googleplus"></a>
         </div>
-</div>
+    </div>
 </form>
 <!--<span class="resp-info"></span>-->
 

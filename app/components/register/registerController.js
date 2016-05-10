@@ -1,4 +1,4 @@
-app.controller("registerController", function ($scope, $location) {
+app.controller("registerController", function ($scope, $http, $location) {
 
     $scope.emailHint = "E-mail...";
     $scope.passwordHint = "Parool...";
@@ -41,7 +41,30 @@ app.controller("registerController", function ($scope, $location) {
             password != undefined &&
             passwordAgain != undefined &&
             password == passwordAgain) {
-            window.location.href = "../../../app/components/home/home.html";
+
+            console.log("Password: " + password);
+            console.log("Email: " + email);
+
+            var req = {
+                method: 'POST',
+                url: 'http://localhost:8080/api/user',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    email: email,
+                    password: password,
+                    role: 'teacher',
+                    authResponse: 'success'
+                }
+            };
+
+            $http(req).then(function () {
+                console.log("Kasutaja registreerimine õnnestus!");
+                window.location.href = "../../../app/components/home/home.html?user=" + email;
+            }, function () {
+                console.log("Kasutaja registreerimine ebaõnnestus!");
+            });
         } else {
             $scope.registerHint = "Registreerumine ebaõnnestus";
         }

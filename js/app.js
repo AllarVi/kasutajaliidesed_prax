@@ -5,6 +5,7 @@ app.config(
         $routeProvider
             .when("/list", {templateUrl: 'list.html'})
             .when("/form", {templateUrl: 'form.html'})
+            .when("/list.detail", {templateUrl: 'detail.html'})
             .otherwise({redirectTo: '/list'});
     }]
 );
