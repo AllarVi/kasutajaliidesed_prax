@@ -61,6 +61,13 @@ function homeController($rootScope, $scope, $routeParams, $http) {
     });
 
     $scope.logout = function () {
+        console.log("Last character...");
+        console.log(userName.substring(userName.length - 1));
+
+        if (userName.substring(userName.length - 1) === '#') {
+            userName = userName.slice(0, -1);
+        }
+
         var req = {
             method: 'POST',
             url: 'http://localhost:8080/api/logout',
