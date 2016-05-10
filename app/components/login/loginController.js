@@ -1,4 +1,4 @@
-app.controller("loginController", function ($scope, productService) {
+app.controller("loginController", function ($scope, $http) {
 
     $scope.data = {};
 
@@ -36,6 +36,8 @@ app.controller("loginController", function ($scope, productService) {
     // function to submit the form after all validation has occurred
     $scope.submitForm = function (email, password) {
 
+        console.log("Form submitted...");
+
         $scope.email = email;
         $scope.password = password;
 
@@ -43,8 +45,33 @@ app.controller("loginController", function ($scope, productService) {
         $scope.submittedPassword = true;
 
         // check to make sure the form is completely valid
-        if ($scope.loginForm.$valid && !$scope.loginForm.$pristine && ((email == $scope.student && password == $scope.studentPassword) || (email == $scope.teacher && password == $scope.teacherPassword))) {
-            window.location.href = "../../../app/components/home/home.html";
+        if ($scope.loginForm.$valid && !$scope.loginForm.$pristine) {
+            console.log("Login initialized...");
+
+            var req = {
+                method: 'POST',
+                url: 'http://localhost:8080/api/login',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                data: {
+                    email: email,
+                    password: password
+                }
+            };
+
+            $http(req).then(function (success) {
+                console.log("Kasutaja sisse logimine õnnestus!");
+
+                if (success.data.authResponse === 'success') {
+                    window.location.href = "../../../app/components/home/home.html?user=" + success.data.email;
+                } else {
+                    console.log("Vale kasutajanimi või parool!");
+                    $scope.emailFieldEmptyErrorMessage = "Vale kasutajanimi või parool!";
+                }
+            }, function () {
+                console.log("Kasutaja sisse logimine ebaõnnestus!");
+            });
         } else {
             $scope.loginHint = "Vigane sisenemine";
         }

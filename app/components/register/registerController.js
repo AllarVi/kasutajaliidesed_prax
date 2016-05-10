@@ -59,9 +59,14 @@ app.controller("registerController", function ($scope, $http, $location) {
                 }
             };
 
-            $http(req).then(function () {
+            $http(req).then(function (success) {
                 console.log("Kasutaja registreerimine õnnestus!");
-                window.location.href = "../../../app/components/home/home.html?user=" + email;
+
+                if (success.data.authResponse === 'success') {
+                    window.location.href = "../../../app/components/home/home.html?user=" + email;
+                } else {
+                    $scope.registerHint = "Registreerumine ebaõnnestus";
+                }
             }, function () {
                 console.log("Kasutaja registreerimine ebaõnnestus!");
             });
