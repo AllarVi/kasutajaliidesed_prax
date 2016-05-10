@@ -14,6 +14,17 @@
 
 <form name="loginForm" novalidate ng-submit="submitForm(email, password)">
     <div class="loginpanel">
+
+        <div class="head">
+            Tallinna Tehnikaülikool
+        </div>
+
+        <div class="hr">
+            <div></div>
+            <div>ÕIS</div>
+            <div></div>
+        </div>
+
         <div class="txt">
             <input name="email" ng-model="email" id="user" type="email" placeholder="{{ emailHint }}"
                    ng-click="hideEmailFieldEmptyErrorMessage()"/>
@@ -38,17 +49,12 @@
     </span>
         </div>
 
-        <div class="hr">
-            <div></div>
-            <div>VÕI</div>
-            <div></div>
-        </div>
 
-        <div class="social">
-            <a href="javascript:void(0)" class="facebook"></a>
-            <a href="javascript:void(0)" class="twitter"></a>
-            <a href="javascript:void(0)" class="googleplus"></a>
-        </div>
+        <!--<div class="social">-->
+        <!--<a href="javascript:void(0)" class="facebook"></a>-->
+        <!--<a href="javascript:void(0)" class="twitter"></a>-->
+        <!--<a href="javascript:void(0)" class="googleplus"></a>-->
+        <!--</div>-->
 </div>
     <!--<span class="resp-info"></span>-->
 </form>

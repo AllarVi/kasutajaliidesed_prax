@@ -1186,7 +1186,6 @@ form {
     -ms-transition: all 0s;
     -o-transition: all 0s;
     transition: all 0s;
-
 }
 
 div.loginpanel {
@@ -1247,6 +1246,12 @@ div.loginpanel input {
 
 div.loginpanel div.txt {
     position: relative;
+}
+
+div.loginpanel div.head {
+    color: #870042;
+    text-align: center;
+    font-size: 1.3em;
 }
 
 div.loginpanel div.txt input[type="email"],

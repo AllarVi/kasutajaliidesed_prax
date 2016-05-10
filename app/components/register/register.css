@@ -1247,6 +1247,12 @@ div.loginpanel div.txt {
     position: relative;
 }
 
+div.loginpanel div.head {
+    color: #870042;
+    text-align: center;
+    font-size: 1.3em;
+}
+
 div.loginpanel div.txt input[type="email"],
 div.loginpanel div.txt input[type="password"] {
     color: #870042;
